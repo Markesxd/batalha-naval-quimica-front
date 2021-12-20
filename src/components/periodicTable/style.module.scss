@@ -1,0 +1,23 @@
+.element {
+    border: 1px solid black;
+    margin: 1px;
+
+    h4 {
+        width: 24px;
+        text-align: center;
+        margin: 0.5rem;
+    }
+
+    span {
+        display: block;
+        width: 24px;
+        margin: 0.1rem 0.5rem;
+        text-align: center;
+    }
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
