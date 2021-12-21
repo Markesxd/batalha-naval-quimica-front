@@ -1,15 +1,13 @@
 import Card from './card';
 import style from './style.module.scss';
 
-const Hand = ({content}) => {
-
-    const cards = [1,2,3,4,5];
+const Hand = ({cards}) => {
 
     return (
         <div className={style.hand}>
-        {cards.map(card => {
+        {cards.map((card, i) => {
            return (
-               <Card symbol='H' name='Hidrogênio'/>
+               <Card symbol={card.symbol} name={card.name} number={card.number} key={i}/>
            ) 
         })}
         </div>

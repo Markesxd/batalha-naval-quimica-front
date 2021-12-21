@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background: linear-gradient(blueviolet, #9534E3);
 }
 ol, ul {
 	list-style: none;
@@ -44,5 +45,5 @@ q:before, q:after {
 }
 table {
 	border-collapse: collapse;
-	border-spacing: 0;
+	border-spacing: 5px;
 }

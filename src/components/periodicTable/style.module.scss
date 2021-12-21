@@ -1,18 +1,29 @@
 .element {
     border: 1px solid black;
-    margin: 1px;
+    text-align: center;
+    width: 3.9rem;
+    background: #cecece;
 
     h4 {
-        width: 24px;
-        text-align: center;
-        margin: 0.5rem;
+        font-size: 1.5rem;
     }
 
     span {
         display: block;
-        width: 24px;
-        margin: 0.1rem 0.5rem;
-        text-align: center;
+        font-size: 0.75rem;
+        margin-top: 0.2rem;
+    }
+}
+
+.missing {
+    width: 3.9rem;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    background: #303030;
+
+    h4 {
+        font-size: 3rem;
     }
 }
 
