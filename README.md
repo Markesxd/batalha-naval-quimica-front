@@ -4,7 +4,7 @@ Esse projeto foi iniciado com [Create React App](https://github.com/facebook/cre
 
 ## Projeto
 
-O projeto visa a digitalizar um jogo de química chamado de Batalha Naval Quimica criado por Debora Pinheiro, para garantir a acecibilidade do jogo à todos. O jogo tem o propósito de gerar interresse no aprendizado de química em alunos do ensino médio e fundamental. A digitalização também permitirá uma dinâmica de jogo maior, criando podendo ser aproveitado por crianças de diversas idades e níveis de educação.     
+O projeto visa digitalizar um jogo de química chamado de Batalha Naval Química criado por Débora Pinheiro, para garantir a acessibilidade do jogo à todos. O jogo tem o propósito de gerar interesse no aprendizado de química em alunos do ensino médio e fundamental. A digitalização também permitirá uma dinâmica de jogo maior, criando podendo ser aproveitado por crianças de diversas idades e níveis de educação.
 
 ## Scripts
 
