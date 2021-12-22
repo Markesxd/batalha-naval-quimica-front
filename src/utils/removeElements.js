@@ -12,7 +12,7 @@ const removeElements = (tableContent, numberOfelements = 10) => {
     for(let k = 0; k < numberOfelements; k++){
         i = parseInt(Math.random() * 9);
         j = parseInt(Math.random() * 18);
-        if(!tableContent[i][j] || missingElements[i][j]){
+        if(tableContent[i][j].symbol === '.' || missingElements[i][j]){
             k--;
             continue;
         }

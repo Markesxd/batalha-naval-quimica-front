@@ -1,37 +1,57 @@
 import {useState} from 'react'
 import style from './style.module.scss';
 
-const PeriodicTable = ({content, elementsMissing}) => {
+const PeriodicTable = ({content, elementsMissing, answer}) => {
 
-    // console.log(ele)
     const [tableContent] = useState(content)
-    const makeTable = () => {
-        let table = '<table>';
-        for(let i = 0; i < 9; i++){
-            table += '<tr>';
-            for(let j = 0; j < 18; j++){
-                if(tableContent[i][j] && !elementsMissing[i][j]){ 
-                    table += `<td class='${style.element}' >
-                    <span>${tableContent[i][j].number}</span>
-                    <h4>${tableContent[i][j].symbol}</h4>
-                    <span>${tableContent[i][j].name}</span>
-                    </td>`;
-                } else if(elementsMissing[i][j]) {
-                    table += `<td class='${style.missing}' >
-                    <h4>?</h4>
-                    </td>`;
-                } else {
-                    table += '<td></td>';
-                }
-            }
-            table += '</tr>';
+
+    const drop = (event) => {
+        event.preventDefault();
+        const givenAnswer = event.dataTransfer.getData('Text');
+        if(givenAnswer === answer) {
+            alert('right')
+        } else {
+            alert('wrong')
         }
-        table +='</table>';
-        return table;
     }
 
+    const allowDrop = (event) => {
+        event.preventDefault();
+    }
+
+    const makeTable = () => tableContent.map((row, i) => {
+            return(
+                <tr key={i}>
+                {row.map((el, j) => {
+                    if(elementsMissing[i][j]){
+                        return(
+                        <td key={j} className={style.missing} onDragOver={(event) => allowDrop(event)} onDrop={(event) => drop(event)}>
+                            <h4>?</h4>
+                        </td>
+                        )
+                    }
+                    if(el.symbol === '.'){
+                        return (
+                            <td key={j} ></td>
+                        )
+                    }
+                    return (
+                        <td key={j} className={style.element + ' ' + style[el.classification]}>
+                            <span>{el.number}</span>
+                            <h4>{el.symbol}</h4>
+                            <span>{el.name}</span>
+                        </td>
+                    )
+                })}
+            </tr>
+            )
+        })
+
     return (
-        <div dangerouslySetInnerHTML={{__html: makeTable()}} className={style.table}>
+        <div className={style.table}>
+           <table>
+               <tbody>{makeTable()}</tbody>
+            </table> 
         </div>
     )
 }

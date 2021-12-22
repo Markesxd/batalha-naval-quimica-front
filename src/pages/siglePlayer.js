@@ -1,13 +1,26 @@
 import {Hand, PeriodicTable, Question} from '../components'
 import { tableContent, removeElements } from '../utils'
+import api from '../api';
+import { useEffect, useState } from 'react';
 
 const SinglePlayer = () => {
 
     const {missingElements, cards} = removeElements(tableContent);
+    const [question, setQuestion] = useState({content: 'Loading', answer: '?'});
+    
+    const getQuestion = () => {
+        api.get('/question/H')
+        .then(({data}) => {
+            setQuestion(data)
+        });
+    }
+
+    useEffect(getQuestion, [])
+
     return (
         <div>
-            <PeriodicTable content={tableContent} elementsMissing={missingElements}/>
-            <Question content={{question: 'Qual o elemento que começa com Hidro e termina com gênio?', answer: 'H'}}/>
+            <PeriodicTable content={tableContent} elementsMissing={missingElements} answer={question.answer}/>
+            <Question content={question.content}/>
             <Hand cards={cards}/>
         </div>
     )
