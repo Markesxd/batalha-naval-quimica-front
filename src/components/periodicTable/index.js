@@ -1,17 +1,24 @@
-import {useState} from 'react'
+import {cloneElement, useState} from 'react'
 import style from './style.module.scss';
 
-const PeriodicTable = ({content, elementsMissing, answer}) => {
+const PeriodicTable = ({content, elementsMissing, answer, children}) => {
 
-    const [tableContent] = useState(content)
+    const [tableContent] = useState(content);
+    const [right, setRight] = useState(0);
 
     const drop = (event) => {
         event.preventDefault();
         const givenAnswer = event.dataTransfer.getData('Text');
         if(givenAnswer === answer) {
-            alert('right')
+            setRight(1);
+            setTimeout(() => {
+                setRight(0);
+            }, 2000);
         } else {
-            alert('wrong')
+            setRight(2);
+            setTimeout(() => {
+                setRight(0);
+            }, 2000);            
         }
     }
 
@@ -49,6 +56,7 @@ const PeriodicTable = ({content, elementsMissing, answer}) => {
 
     return (
         <div className={style.table}>
+            {cloneElement(children, {right})}
            <table>
                <tbody>{makeTable()}</tbody>
             </table> 
