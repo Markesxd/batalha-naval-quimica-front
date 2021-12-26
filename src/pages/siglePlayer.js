@@ -1,4 +1,5 @@
 import {Acknowledge, Hand, PeriodicTable, Question} from '../components'
+import Game from '../contexts/game';
 import { tableContent, removeElements } from '../utils'
 import api from '../api';
 import { useEffect, useState } from 'react';
@@ -18,13 +19,13 @@ const SinglePlayer = () => {
     useEffect(getQuestion, [])
 
     return (
-        <div>
-            <PeriodicTable content={tableContent} elementsMissing={missingElements} answer={question.answer}>
+        <Game>
+            <PeriodicTable content={tableContent} elementsMissing={missingElements} answer={question.answer} cards={cards}>
                 <Acknowledge />
             </PeriodicTable>
             <Question content={question.content}/>
             <Hand cards={cards}/>
-        </div>
+        </Game>
     )
 }
 

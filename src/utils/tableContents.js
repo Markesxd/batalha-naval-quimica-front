@@ -176,4 +176,4 @@ tableContent[8][15] = new Element('Md', 101, 'Mendelévio', 258, 'acti');
 tableContent[8][16] = new Element('No', 102, 'Nobélio', 259, 'acti');
 tableContent[8][17] = new Element('Lr', 103, 'Laurêncio', 262, 'acti');
 
-export {tableContent}
+export default tableContent

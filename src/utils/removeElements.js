@@ -4,7 +4,7 @@ const removeElements = (tableContent, numberOfelements = 10) => {
 
     const missingElements = [];
     for(let k = 0; k < 9; k++){
-        missingElements[k] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        missingElements[k] = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
     }
 
     const cards = [];
@@ -17,7 +17,7 @@ const removeElements = (tableContent, numberOfelements = 10) => {
             continue;
         }
         cards.push(tableContent[i][j]);
-        missingElements[i][j] = 1;
+        missingElements[i][j] = true;
     }
     
 

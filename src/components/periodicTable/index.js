@@ -1,16 +1,22 @@
 import {cloneElement, useState} from 'react'
 import style from './style.module.scss';
+import { findElement } from '../../utils';
+import { useGame } from '../../contexts/game';
 
-const PeriodicTable = ({content, elementsMissing, answer, children}) => {
+const PeriodicTable = ({content, elementsMissing, answer, cards, children}) => {
 
     const [tableContent] = useState(content);
     const [right, setRight] = useState(0);
+    const {hand, updateHand} = useGame();
 
     const drop = (event) => {
         event.preventDefault();
         const givenAnswer = event.dataTransfer.getData('Text');
         if(givenAnswer === answer) {
             setRight(1);
+            const {i, j} = findElement(content, givenAnswer);
+            elementsMissing[i][j] = false;
+            updateHand(cards, hand, givenAnswer);
             setTimeout(() => {
                 setRight(0);
             }, 2000);
@@ -55,12 +61,14 @@ const PeriodicTable = ({content, elementsMissing, answer, children}) => {
         })
 
     return (
-        <div className={style.table}>
-            {cloneElement(children, {right})}
-           <table>
-               <tbody>{makeTable()}</tbody>
-            </table> 
-        </div>
+        <>
+            <div className={style.table}>
+                {cloneElement(children, {right})}
+            <table>
+                <tbody>{makeTable()}</tbody>
+                </table>
+            </div>
+        </>
     )
 }
 
