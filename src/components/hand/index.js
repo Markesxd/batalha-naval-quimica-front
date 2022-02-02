@@ -2,10 +2,8 @@ import Card from './card';
 import style from './style.module.scss';
 import { useGame } from '../../contexts/game';
 
-const Hand = ({cards}) => {
+const Hand = ({cards, hand}) => {
     
-    const {hand} = useGame();
-
     const makeHand = () => {
         return (
             cards.map((card, i) => {

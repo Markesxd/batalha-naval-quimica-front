@@ -5,17 +5,23 @@ export const gameContext  = createContext();
 
 const Game = ({children}) => {
 
-    const [hand, setHand] = useState([true,true,true,true,true,true,true,true,true,true]);
-    
-    function updateHand(cards, hand, element){
-        const newHand = removeCard(cards, hand, element)
-        setHand(newHand);
+    const [score, setScore] = useState(100);
+    let answer;
+
+    function addScore(){
+        setScore(score + 10);
+    }
+
+    function takeScore() {
+        setScore(score - 5)
     }
 
     return (
         <gameContext.Provider value={{
-            hand,
-            updateHand
+            score,
+            addScore,
+            takeScore,
+            answer
         }}>
             {children}
         </gameContext.Provider>

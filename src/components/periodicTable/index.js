@@ -3,11 +3,11 @@ import style from './style.module.scss';
 import { findElement } from '../../utils';
 import { useGame } from '../../contexts/game';
 
-const PeriodicTable = ({content, elementsMissing, answer, cards, children}) => {
+const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand, updateHand}) => {
 
     const [tableContent] = useState(content);
     const [right, setRight] = useState(0);
-    const {hand, updateHand} = useGame();
+    const {addScore, takeScore, score} = useGame();
 
     const drop = (event) => {
         event.preventDefault();
@@ -17,11 +17,13 @@ const PeriodicTable = ({content, elementsMissing, answer, cards, children}) => {
             const {i, j} = findElement(content, givenAnswer);
             elementsMissing[i][j] = false;
             updateHand(cards, hand, givenAnswer);
+            addScore();
             setTimeout(() => {
                 setRight(0);
             }, 2000);
         } else {
             setRight(2);
+            takeScore()
             setTimeout(() => {
                 setRight(0);
             }, 2000);            
@@ -61,14 +63,12 @@ const PeriodicTable = ({content, elementsMissing, answer, cards, children}) => {
         })
 
     return (
-        <>
-            <div className={style.table}>
-                {cloneElement(children, {right})}
+        <div className={style.table}>
+            {cloneElement(children, {right})}
             <table>
                 <tbody>{makeTable()}</tbody>
-                </table>
-            </div>
-        </>
+            </table>
+        </div>
     )
 }
 

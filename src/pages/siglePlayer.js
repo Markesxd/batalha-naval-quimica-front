@@ -1,30 +1,49 @@
-import {Acknowledge, Hand, PeriodicTable, Question} from '../components'
+import {Acknowledge, Hand, PeriodicTable, Question} from '../components';
 import Game from '../contexts/game';
-import { tableContent, removeElements } from '../utils'
+import { tableContent, removeElements, pickACard, empty, removeCard } from '../utils';
+import { useEffect, useState, useRef } from 'react';
 import api from '../api';
-import { useEffect, useState } from 'react';
 
 const SinglePlayer = () => {
 
-    const {missingElements, cards} = removeElements(tableContent);
-    const [question, setQuestion] = useState({content: 'Loading', answer: '?'});
+    const a = empty();
+    const [missingElements, setMissingElements] = useState(a.missingElements);
+    const [cards, setCards] = useState(a.cards);
+    const [hand, setHand] = useState([true,true,true,true,true,true,true,true,true,true]);
     
-    const getQuestion = () => {
-        api.get('/question/H')
-        .then(({data}) => {
-            setQuestion(data)
-        });
+    function updateHand(cards, hand, element){
+        const newHand = removeCard(cards, hand, element)
+        setHand(newHand);
     }
 
-    useEffect(getQuestion, [])
+    const [question, setQuestion] = useState({content: 'Clique aqui Para Começar', answer: 'H'});
+    
+    const getQuestion = () => {
+        const card = pickACard(cards, hand);
+        api.get(`/question/${card.symbol}`)
+        .then(({data}) => {
+            setQuestion(data);
+        })
+        .catch((err) => {
+            setQuestion({content: card.name, answer: card.symbol});
+        })
+    }
+
+    useEffect(() => {
+        const removed = removeElements(tableContent);    
+        setMissingElements(removed.missingElements);
+        setCards(removed.cards);
+    }, [])
+
+    useEffect(getQuestion, [hand]);
 
     return (
         <Game>
-            <PeriodicTable content={tableContent} elementsMissing={missingElements} answer={question.answer} cards={cards}>
+            <PeriodicTable content={tableContent} elementsMissing={missingElements} cards={cards} answer={question.answer} updateHand={updateHand} hand={hand}>
                 <Acknowledge />
             </PeriodicTable>
-            <Question content={question.content}/>
-            <Hand cards={cards}/>
+            <Question click={getQuestion} content={question.content}/>
+            <Hand cards={cards} hand={hand}/>
         </Game>
     )
 }
