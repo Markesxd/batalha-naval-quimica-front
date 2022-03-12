@@ -1,4 +1,7 @@
+import gameover from './checkGameover';
+
 const pickACard = (cards, hand) => {
+    if(gameover(hand)) return false;
     let i;
     let j = false;
     while(!j){

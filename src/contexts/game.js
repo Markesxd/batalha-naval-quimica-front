@@ -3,10 +3,9 @@ import { removeCard } from "../utils";
 
 export const gameContext  = createContext();
 
-const Game = ({children}) => {
-
-    const [score, setScore] = useState(100);
+const Game = ({children}) => {   
     let answer;
+    const [score, setScore] = useState(100);
 
     function addScore(){
         setScore(score + 10);

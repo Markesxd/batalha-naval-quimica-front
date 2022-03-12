@@ -1,4 +1,4 @@
-const func = () => {
+const empty = () => {
 
     const missingElements = [];
     
@@ -14,4 +14,4 @@ const func = () => {
     return {missingElements, cards}
 }
 
-export default func;
+export default empty;

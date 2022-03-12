@@ -7,6 +7,50 @@
     align-items: center;
 }
 
+.scoreBoard {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    height: 95vh;
+	background: linear-gradient(blueviolet, #9534E3);
+
+    h2 {
+        font-size: 3rem;
+        margin-top: 8rem;
+    }
+
+    span {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+
+        strong {
+            color: #FDCA40;
+        }
+    }
+
+    a {
+        background: #E6E8E6;
+        color: black;
+        text-decoration: none;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        box-shadow: 0 3px #BFC4BF;
+
+    }
+
+    a:hover {
+        background: #BFC4BF;
+    }
+    
+    a:active {
+        margin-top: 1.2rem;
+        background: #BFC4BF;
+    } 
+}
+
 .card {
     padding: 2rem;
     border: 1px solid black;

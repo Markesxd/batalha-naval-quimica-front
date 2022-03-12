@@ -4,6 +4,7 @@ import findElement from './findElement';
 import removeCard from './removeCard';
 import pickACard from './pickACard';
 import empty from './empty';
+import checkGameover from './checkGameover';
 
 export {
     tableContent,
@@ -11,5 +12,6 @@ export {
     findElement,
     removeCard,
     pickACard,
-    empty
+    empty,
+    checkGameover
 }
