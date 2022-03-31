@@ -3,7 +3,7 @@ import style from './style.module.scss';
 import { findElement, checkGameover as gameover } from '../../utils';
 import { useGame } from '../../contexts/game';
 
-const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand, updateHand, setScore}) => {
+const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand, updateHand}) => {
     const {addScore, takeScore, score} = useGame();
     const [tableContent] = useState(content);
     const [right, setRight] = useState(0);
@@ -17,7 +17,6 @@ const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand,
             const {i, j} = findElement(content, givenAnswer);
             elementsMissing[i][j] = false;
             addScore();
-            setScore(score);
             if(!gameover(hand)){
                 setTimeout(() => {
                     setRight(0);

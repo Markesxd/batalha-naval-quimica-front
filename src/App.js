@@ -1,28 +1,20 @@
 import { useState } from 'react';
-import {SinglePlayer} from './pages';
+import {SinglePlayer, Landing} from './pages';
 import './general.scss';
 
 function App() {
 
-  const [router, setRouter] = useState({page: 'single', data: null});
-  let score;
+  const [router, setRouter] = useState({page: 'landing', data: null});
   const handleRoutes = (page, data) => {
     setRouter({page, data});
-  }
-
-  const cpScore = (value) => {
-    score = value;
   }
 
   const Router = () => {
     switch(router.page){
       case 'single':
-        return <SinglePlayer router={handleRoutes} setScore={cpScore}/>;
-      case 'score':
-        return( 
-        <>
-          <h1>Você fez {score} pontos</h1>
-        </>);
+        return <SinglePlayer router={handleRoutes}/>;
+      case 'landing':
+        return <Landing router={handleRoutes}/>
       default:
         return <h1>default</h1>
     }

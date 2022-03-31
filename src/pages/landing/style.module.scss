@@ -1,0 +1,21 @@
+.container {
+    // margin-top: 2rem;
+    height: 100vh;
+    display: flex;
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50vw;
+    }
+}
+
+.image {
+    background: url('../../img/Periodic_table.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 25% 45%;
+}

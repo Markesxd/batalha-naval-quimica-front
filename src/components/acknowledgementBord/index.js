@@ -1,5 +1,6 @@
 import { useGame } from '../../contexts/game';
 import { checkGameover as gameover } from '../../utils';
+import Button from '../button';
 import style from './style.module.scss';
 
 const Acknowledge = ({right, hand}) => {
@@ -10,7 +11,7 @@ const Acknowledge = ({right, hand}) => {
                 <div className={style.scoreBoard}>
                     <h2>Parabéns você Venceu!</h2>
                     <span>Pontuação: <strong>{score}</strong></span>
-                    <a href=''>Voltar</a>
+                    <Button href=''>Voltar</Button>
                 </div>
             );
         }

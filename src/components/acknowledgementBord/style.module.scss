@@ -31,24 +31,13 @@
     }
 
     a {
-        background: #E6E8E6;
-        color: black;
-        text-decoration: none;
-        border-radius: 1rem;
-        padding: 0.5rem;
-        margin-top: 1rem;
-        box-shadow: 0 3px #BFC4BF;
+        background: #d4d400;
 
     }
 
     a:hover {
-        background: #BFC4BF;
+        background: #ffff02;
     }
-    
-    a:active {
-        margin-top: 1.2rem;
-        background: #BFC4BF;
-    } 
 }
 
 .card {

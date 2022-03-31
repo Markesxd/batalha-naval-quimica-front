@@ -1,14 +1,14 @@
-import {Acknowledge, Hand, PeriodicTable, Question} from '../components';
-import Game from '../contexts/game';
-import { tableContent, removeElements, pickACard, empty, removeCard } from '../utils';
+import {Acknowledge, Hand, PeriodicTable, Question} from '../../components';
+import Game from '../../contexts/game';
+import { tableContent, removeElements, pickACard, empty, removeCard } from '../../utils';
 import { useEffect, useState } from 'react';
-import api from '../api';
+import api from '../../api';
 
-const SinglePlayer = ({router, setScore}) => {
+const SinglePlayer = ({router}) => {
 
-    const a = empty();
-    const [missingElements, setMissingElements] = useState(a.missingElements);
-    const [cards, setCards] = useState(a.cards);
+    const emptyHand = empty();
+    const [missingElements, setMissingElements] = useState(emptyHand.missingElements);
+    const [cards, setCards] = useState(emptyHand.cards);
     const [hand, setHand] = useState([true,true,true,true,true,true,true,true,true,true]);
     
     function updateHand(cards, hand, element){
@@ -31,7 +31,7 @@ const SinglePlayer = ({router, setScore}) => {
     }
 
     useEffect(() => {
-        const removed = removeElements(tableContent, 5);    
+        const removed = removeElements(tableContent, 1);    
         setMissingElements(removed.missingElements);
         setCards(removed.cards);
     }, [])
@@ -40,7 +40,7 @@ const SinglePlayer = ({router, setScore}) => {
 
     return (
         <Game>
-            <PeriodicTable content={tableContent} elementsMissing={missingElements} cards={cards} answer={question.answer} updateHand={updateHand} hand={hand} router={router} setScore={setScore}>
+            <PeriodicTable content={tableContent} elementsMissing={missingElements} cards={cards} answer={question.answer} updateHand={updateHand} hand={hand} router={router}>
                 <Acknowledge/>
             </PeriodicTable>
             <Question click={getQuestion} content={question.content}/>
