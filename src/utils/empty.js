@@ -10,8 +10,12 @@ const empty = () => {
     for(let i = 0; i < 10; i++){
         cards.push({content: 'a', answer: 'H'});
     }
+    const hand = [];
+    for(let i = 0; i < 10; i++){
+        hand.push(true)
+    }
     
-    return {missingElements, cards}
+    return {missingElements, cards, hand}
 }
 
 export default empty;

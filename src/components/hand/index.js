@@ -2,14 +2,14 @@ import Card from './card';
 import style from './style.module.scss';
 import { useGame } from '../../contexts/game';
 
-const Hand = ({cards, hand}) => {
+const Hand = ({cards, hand, difficulty}) => {
     
     const makeHand = () => {
         return (
             cards.map((card, i) => {
                 return (
                     hand[i]?
-                    <Card symbol={card.symbol} name={card.name} number={card.number} key={i}/>:
+                    <Card difficulty={difficulty} symbol={card.symbol} name={card.name} number={card.number} key={i}/>:
                     null
                 ) 
              })

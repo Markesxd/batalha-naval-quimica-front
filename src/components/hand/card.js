@@ -1,6 +1,6 @@
 import style from './style.module.scss';
 
-const Card = ({symbol, name, number}) => {
+const Card = ({symbol, name, number, difficulty}) => {
 
     const dragStart = (event) => {
         event.dataTransfer.setData('Text', event.target.children[1].innerText)
@@ -8,9 +8,9 @@ const Card = ({symbol, name, number}) => {
 
     return (
         <div draggable onDragStart={(e) => dragStart(e)} className={style.card}>
-            <span>{number}</span>
+            {difficulty === 'hard'?null:<span>{number}</span>}
             <h3>{symbol}</h3>
-            <span>{name}</span>
+            {difficulty === 'easy'?<span>{name}</span>:null}
         </div>
     )
 }

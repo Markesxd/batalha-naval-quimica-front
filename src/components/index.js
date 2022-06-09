@@ -6,6 +6,7 @@ import Header from "./header";
 import Title from "./title";
 import Button from "./button";
 import Paragraph from "./paragraph";
+import Jumbotron from "./jumbotron";
 
 export {
     PeriodicTable,
@@ -15,5 +16,6 @@ export {
     Header,
     Title,
     Button,
-    Paragraph
+    Paragraph,
+    Jumbotron
 }

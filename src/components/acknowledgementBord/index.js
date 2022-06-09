@@ -1,12 +1,11 @@
 import { useGame } from '../../contexts/game';
-import { checkGameover as gameover } from '../../utils';
 import Button from '../button';
 import style from './style.module.scss';
 
-const Acknowledge = ({right, hand}) => {
+const Acknowledge = ({right, hand, gameover}) => {
     const {score} = useGame();
     const handleAcknowlegement = () => {
-        if(gameover(hand)){
+        if(gameover){
             return (
                 <div className={style.scoreBoard}>
                     <h2>Parabéns você Venceu!</h2>
