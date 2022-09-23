@@ -4,7 +4,7 @@ import { findElement } from '../../utils';
 import { useGame } from '../../contexts/game';
 import Jumbotron from '../jumbotron';
 
-const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand, updateHand, rounds, currentRound, setCurrentRound}) => {
+const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand, updateHand, rounds, currentRound, setCurrentRound, router}) => {
     const {addScore, takeScore, score} = useGame();
     const [tableContent] = useState(content);
     const [right, setRight] = useState(0);
@@ -69,7 +69,7 @@ const PeriodicTable = ({content, elementsMissing, cards, children, answer, hand,
 
     return (
         <div className={style.table}>
-            {cloneElement(children, {right, hand, gameover: currentRound > rounds   })}
+            {cloneElement(children, {right, hand, gameover: currentRound > rounds, router})}
             <Jumbotron round={currentRound} gameover={currentRound > rounds}/>
             <table>
                 <tbody>{makeTable()}</tbody>

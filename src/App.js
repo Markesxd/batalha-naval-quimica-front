@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {SinglePlayer, Landing} from './pages';
+import {Landing} from './pages';
 import './general.scss';
 import Options from './pages/options';
 
@@ -13,13 +13,13 @@ function App() {
   const Router = () => {
     switch(router.page){
       case 'single':
-        return <SinglePlayer router={handleRoutes}/>;
-      case 'landing':
-        return <Landing router={handleRoutes}/>
-      case 'options':
-        return <Options/>
+        return <Options select={'single'} router={handleRoutes}/>
+      case 'create':
+        return <Options select={'create'} router={handleRoutes}/>
+      case 'join':
+        return <Options select={'join'} router={handleRoutes}/>
       default:
-        return <h1>default</h1>
+        return <Landing router={handleRoutes}/>
     }
   }
 

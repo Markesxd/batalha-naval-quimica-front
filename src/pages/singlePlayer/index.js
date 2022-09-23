@@ -4,7 +4,7 @@ import { tableContent, removeElements, pickACard, empty, removeCard } from '../.
 import { useEffect, useState, useRef } from 'react';
 import api from '../../api';
 
-const SinglePlayer = ({router, options}) => {
+const SinglePlayer = ({router, info}) => {
 
     const emptyHand = empty();
     const [missingElements, setMissingElements] = useState(emptyHand.missingElements);
@@ -34,21 +34,21 @@ const SinglePlayer = ({router, options}) => {
 
     useEffect(() => {
         const extraCards = numberOfExtraCards();
-        const removed = removeElements(tableContent, options.rounds + extraCards);    
+        const removed = removeElements(tableContent, info.rounds + extraCards);    
         setMissingElements(removed.missingElements);
         setCards(removed.cards);
         setHand(initialHand(extraCards))
     }, [])
 
     const numberOfExtraCards = () => {
-        if(options.difficulty === 'easy') return 1;
-        if(options.difficulty === 'medium') return 2;
-        if(options.difficulty === 'hard') return 3;
+        if(info.difficulty === 'easy') return 1;
+        if(info.difficulty === 'medium') return 2;
+        if(info.difficulty === 'hard') return 3;
     }
 
     const initialHand = (extraCards) =>{
         const hand = [];
-        for(let i = 0; i < options.rounds + extraCards; i++){
+        for(let i = 0; i < info.rounds + extraCards; i++){
             hand.push(true);
         }
         return hand;
@@ -58,13 +58,13 @@ const SinglePlayer = ({router, options}) => {
 
     return (
         <Game>
-            <PeriodicTable content={tableContent} elementsMissing={missingElements} cards={cards} answer={question.answer} updateHand={updateHand} hand={hand} router={router} rounds={options.rounds} currentRound={currentRound} setCurrentRound={setCurrentRound}>
+            <PeriodicTable content={tableContent} elementsMissing={missingElements} cards={cards} answer={question.answer} updateHand={updateHand} hand={hand} router={router} rounds={info.rounds} currentRound={currentRound} setCurrentRound={setCurrentRound}>
                 <Acknowledge/>
             </PeriodicTable>
             <Question handRef={handRef} click={getQuestion} content={question.content}/>
             {
-                currentRound <= options.rounds?
-                <Hand ref={handRef} cards={cards} hand={hand} difficulty={options.difficulty}/>:
+                currentRound <= info.rounds?
+                <Hand fowardedRef={handRef} cards={cards} hand={hand} difficulty={info.difficulty}/>:
                 null
             }
         </Game>

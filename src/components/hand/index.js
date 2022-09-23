@@ -2,7 +2,7 @@ import Card from './card';
 import style from './style.module.scss';
 import { useGame } from '../../contexts/game';
 
-const Hand = ({cards, hand, difficulty}) => {
+const Hand = ({cards, hand, difficulty, fowardedRef}) => {
     
     const makeHand = () => {
         return (
@@ -16,7 +16,7 @@ const Hand = ({cards, hand, difficulty}) => {
         )
     }
     return (
-        <div className={style.hand}>
+        <div ref={fowardedRef} className={style.hand}>
         {makeHand()}
         </div>
     )

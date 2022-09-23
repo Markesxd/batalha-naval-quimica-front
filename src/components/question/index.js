@@ -9,7 +9,7 @@ const Question = ({content, click, handRef}) => {
         if(first){
             setFirst(false);
             click();
-            handRef.current.scrollIntoView();
+            handRef.current.scrollIntoView({behavior: 'smooth'});
         }
     }
 

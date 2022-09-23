@@ -2,7 +2,7 @@ import { useGame } from '../../contexts/game';
 import Button from '../button';
 import style from './style.module.scss';
 
-const Acknowledge = ({right, hand, gameover}) => {
+const Acknowledge = ({right, hand, gameover, router}) => {
     const {score} = useGame();
     const handleAcknowlegement = () => {
         if(gameover){
@@ -10,7 +10,7 @@ const Acknowledge = ({right, hand, gameover}) => {
                 <div className={style.scoreBoard}>
                     <h2>Parabéns você Venceu!</h2>
                     <span>Pontuação: <strong>{score}</strong></span>
-                    <Button href=''>Voltar</Button>
+                    <Button onClick={() => router('landing')}>Voltar</Button>
                 </div>
             );
         }

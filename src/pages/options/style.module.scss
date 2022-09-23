@@ -16,6 +16,9 @@
             background-size: cover;
             background-repeat: no-repeat;
             padding: 1rem;
+            min-width: 15rem;
+            display: flex;
+            justify-content: center;
             margin-bottom: 1rem;
             border-radius: 1rem 1rem 0 0;
 
@@ -23,6 +26,13 @@
                 font-size: 3rem;
                 color: white;
             }
+        }
+
+        input {
+            margin-bottom: 1rem;
+            width: 85%;
+            border: 1px solid gray;
+            border-radius: 8px;
         }
 
         span {
@@ -33,7 +43,7 @@
             margin-bottom: 0.5rem;
 
             .num {
-                max-width: 1rem;
+                max-width: 2rem;
                 margin-left: 1rem;
             }
 
@@ -52,7 +62,7 @@
             margin-bottom: 0.5rem;
         }
 
-        a {
+        button {
             flex-grow: initial;
             margin-bottom: 1rem;
         }

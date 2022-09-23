@@ -13,9 +13,9 @@ const Landing = ({router}) => {
                     {Text.introduction}
                 </Paragraph>
                 <div>
-                <Button onClick={() => router('single')}>Criar Sala</Button>
-                <Button onClick={() => router('single')}>Jogar</Button>
-                <Button onClick={() => router('options')}>Treinar</Button>
+                <Button onClick={() => router('create')}>Criar Sala</Button>
+                <Button onClick={() => router('join')}>Jogar</Button>
+                <Button onClick={() => router('single')}>Treinar</Button>
                 </div>
             </div>
             <div>
